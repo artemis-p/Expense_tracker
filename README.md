@@ -8,3 +8,5 @@ A web service for tracking expenses. Customers will use some kind of client soft
 - SQLite
 - Ruby
 - RSpec
+- Coderay
+- Rack
