@@ -19,6 +19,8 @@ module ExpenseTracker
       post '/expenses', JSON.generate(coffee) 
       # assuminng we'll be posting some key - value pairs to the /expenses endpoint. we'll support sending and receiving data in JSON format. Because JSON objects convert to ruby hashes with string keys, we'l  use string keys in our example
       expect(last_response.status).to eq(200)
+      parsed = JSON.parse(last_response.body)
+      expect(parsed).to include('expense_id' => a_kind_of(Integer))
     end
   end
 end
