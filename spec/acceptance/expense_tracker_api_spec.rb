@@ -16,7 +16,9 @@ module ExpenseTracker
         'amount' => 5.75,
         'date' => '2019-06-10'
       }
-      post '/expenses', JSON.generate(coffee)
+      post '/expenses', JSON.generate(coffee) 
+      # assuminng we'll be posting some key - value pairs to the /expenses endpoint. we'll support sending and receiving data in JSON format. Because JSON objects convert to ruby hashes with string keys, we'l  use string keys in our example
+      expect(last_response.status).to eq(200)
     end
   end
 end
