@@ -1,22 +1,13 @@
-# class API < Sinatra::Base
-#   def initialize
-#     @ledger = Ledger.new
-#     super() #rest of initialization from Sinatra
-#   end
-# end
+require 'rspec/core'
+require_relative 'spec/unit/app/api_spec.rb'
+require 'sinatra/base'
 
-# # Later, callers do this:
-# app = API.new
+class Ledger
+  def record(_expense)
+    ExpenseTracker::RecordResult.new
+  end
+end
 
-# class API < Sinatra::Base
-#   def initialize(ledger:)
-#     @ledger = ledger
-#     super() #rest of initialization from Sinatra
-#   end
-# end
-
-# # Later, callers do this:
-# app = API.new(ledger: Ledger.new) #dependency injection
 class API < Sinatra::Base
   def initialize(ledger: Ledger.new) # helping the callers 
     @ledger = ledger
